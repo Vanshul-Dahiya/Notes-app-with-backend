@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-
+const methodOverride = require("method-override");
 const express = require("express");
 // it helps us create different layouts which are reusable through many pages
 const expressLayouts = require("express-ejs-layouts");
@@ -34,6 +34,7 @@ app.use(passport.session());
 // add middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 // connect to DB
 connectDB();
